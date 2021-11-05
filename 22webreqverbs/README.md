@@ -1,4 +1,4 @@
-##Why Close() response.body?
+## Why Close() response.body?
 
 1. If the Body is not both read to EOF and closed, the Client’s underlying RoundTripper (typically Transport) may not be able to re-use a persistent TCP connection to the server for a subsequent “keep-alive” request.
     - What's a roundTripper: "round-trip": ghoom ke waps aana:          RoundTripper is an interface representing the ability to execute a single HTTP transaction, obtaining the Response for a given Request." It sits in between the low level stuff like dialing, tcp, etc. and the high level details of HTTP (redirects, etc.) RoundTrip is the method do do a single round trip of request sent to server, server answers with response
