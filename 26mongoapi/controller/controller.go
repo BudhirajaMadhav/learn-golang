@@ -16,7 +16,8 @@ import (
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-const connectionString = "mongodb+srv://dample:<password>@cluster0.xbc9d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+// defined in other file
+// const connectionString = "mongodb+srv://<username>:<password>@cluster0.xbc9d.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 const dbName = "netflix"
 const colName = "watchlist"
 
@@ -54,7 +55,6 @@ func insertOneMovie(movie model.Netflix) {
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	fmt.Println("Inserted 1 movie in db with id:", inserted.InsertedID)
 
 }

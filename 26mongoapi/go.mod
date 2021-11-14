@@ -2,4 +2,7 @@ module github.com/budhirajamadhav/mongoapi
 
 go 1.16
 
-require go.mongodb.org/mongo-driver v1.7.4 // indirect
+require (
+	github.com/gorilla/mux v1.8.0 // indirect
+	go.mongodb.org/mongo-driver v1.7.4 // indirect
+)
