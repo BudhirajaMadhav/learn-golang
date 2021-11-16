@@ -9,27 +9,40 @@ func main() {
 	fmt.Println("Race Condition in golang")
 
 	wg := &sync.WaitGroup{}
+	mut := &sync.Mutex{}
 
 	score := []int{0}
 
 	wg.Add(3)
-	go func(wg *sync.WaitGroup) {
+	go func(wg *sync.WaitGroup, mut *sync.Mutex) {
 		fmt.Println("Goroutine no 1")
+
+		mut.Lock()
 		score = append(score, 1)
-		wg.Done()
-	}(wg)
+		mut.Unlock()
 
-	go func(wg *sync.WaitGroup) {
+		wg.Done()
+	}(wg, mut)
+
+	go func(wg *sync.WaitGroup, mut *sync.Mutex) {
 		fmt.Println("Goroutine no 2")
-		score = append(score, 2)
-		wg.Done()
-	}(wg)
 
-	go func(wg *sync.WaitGroup) {
-		fmt.Println("Goroutine no 3")
-		score = append(score, 3)
+		mut.Lock()
+		score = append(score, 2)
+		mut.Unlock()
+
 		wg.Done()
-	}(wg)
+	}(wg, mut)
+
+	go func(wg *sync.WaitGroup, mut *sync.Mutex) {
+		fmt.Println("Goroutine no 3")
+
+		mut.Lock()
+		score = append(score, 3)
+		mut.Unlock()
+		
+		wg.Done()
+	}(wg, mut)
 
 	wg.Wait()
 
