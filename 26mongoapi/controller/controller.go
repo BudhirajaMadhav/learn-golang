@@ -148,6 +148,7 @@ func CreateMovie(w http.ResponseWriter, r *http.Request) {
 
 	var movie model.Netflix
 	_ = json.NewDecoder(r.Body).Decode(&movie)
+	fmt.Println(movie)
 	insertOneMovie(movie)
 	json.NewEncoder(w).Encode(movie)
 
