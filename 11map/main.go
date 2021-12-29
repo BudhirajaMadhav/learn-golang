@@ -4,9 +4,9 @@ import "fmt"
 
 func main() {
 	fmt.Println("Maps in golang")
-
+	// make is used to initialise the map	
 	languages := make(map[string]string)
-
+		
 	languages["JS"] = "Javascript"
 	languages["PY"] = "Python"
 	languages["RB"] = "Ruby"
