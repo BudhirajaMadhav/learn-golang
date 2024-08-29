@@ -47,6 +47,7 @@ func main() {
 	fmt.Println(courses)
 	var index int = 2
 
+	// this is known as ellipsis
 	courses = append(courses[:index], courses[index + 1:]...)
 	fmt.Println(courses)
 
